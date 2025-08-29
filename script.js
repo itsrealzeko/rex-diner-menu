@@ -13,6 +13,7 @@ const pricesAPI = {
 const cartItems = [];
 let total = 0;
 
+// Discount elements
 const autoDiscountCheckbox = document.getElementById('auto-discount');
 const customDiscountCheckbox = document.getElementById('custom-discount-toggle');
 const customInput = document.getElementById('custom-discount');
@@ -108,4 +109,17 @@ function removeItem(index) {
 const copyTotalBtn = document.getElementById('copy-total-btn');
 copyTotalBtn.addEventListener('click', () => {
   navigator.clipboard.writeText(total.toFixed(2));
+});
+
+// Dark/Light Mode
+const themeBtn = document.getElementById('theme-toggle-btn');
+const body = document.body;
+
+// Auto dark mode on load
+body.classList.add('dark-mode');
+themeBtn.textContent = '☀️';
+
+themeBtn.addEventListener('click', () => {
+  body.classList.toggle('dark-mode');
+  themeBtn.textContent = body.classList.contains('dark-mode') ? '☀️' : '🌙';
 });
